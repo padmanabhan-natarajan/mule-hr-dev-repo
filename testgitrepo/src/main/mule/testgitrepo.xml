@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="29bb2273-2763-468f-a60c-eca7e93cc23b" >
+		<http:listener-connection host="localhost" port="8081" />
+	</http:listener-config>
+	<flow name="testgitrepoFlow" doc:id="df18fe20-8eb3-4572-b55a-467f62b2253a" >
+		<http:listener doc:name="Listener" doc:id="457d8afb-a42f-45e8-811c-2790a75d0792" config-ref="HTTP_Listener_config" path="/testRepo"/>
+		<set-payload value="TestRepoNow" doc:name="Set Payload" doc:id="9732a359-5e58-4fe6-ac4a-ead3e4dd16cc" />
+		<logger level="INFO" doc:name="Logger" doc:id="9a99c8dc-c567-4793-831d-4318c3fa504d" message="#[read]"/>
+	</flow>
+</mule>
